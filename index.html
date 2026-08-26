@@ -213,6 +213,48 @@
       text-shadow: 0 1px 0 rgba(255,255,255,0.35);
     }
 
+    .howto-grid {
+      position: relative;
+    }
+
+    @media (min-width: 1280px) {
+      .howto-grid::before {
+        content: "";
+        position: absolute;
+        top: 46px;
+        left: 10%;
+        right: 10%;
+        height: 3px;
+        background: repeating-linear-gradient(90deg, rgba(151,252,228,0.55) 0 14px, transparent 14px 26px);
+        pointer-events: none;
+        z-index: 0;
+      }
+    }
+
+    .howto-step {
+      position: relative;
+      z-index: 1;
+      min-height: 100%;
+    }
+
+    .howto-step:hover .step-num {
+      transform: scale(1.08);
+    }
+
+    .howto-icon {
+      background: linear-gradient(180deg, rgba(200,255,26,0.16), rgba(151,252,228,0.06));
+      box-shadow: inset 0 1px 0 rgba(245,254,253,0.12);
+    }
+
+    .howto-chip {
+      border: 1px solid rgba(151,252,228,0.22);
+      background: rgba(4,6,12,0.45);
+    }
+
+    .howto-meta {
+      font-variant-numeric: tabular-nums;
+    }
+
     .rays {
       background: repeating-linear-gradient(
         -18deg,
@@ -451,44 +493,111 @@
       </svg>
       <div class="bg-gradient-to-b from-firefly/80 to-ebony">
         <div class="relative mx-auto w-[min(1180px,calc(100%-1.5rem))] py-16">
-          <div class="mb-12 text-center">
+          <div class="mb-8 text-center">
             <p class="font-round text-xs font-bold uppercase tracking-[0.28em] text-aqua">Catch of the day</p>
             <h2 class="mt-2 font-display text-4xl text-lime sm:text-5xl">How to Buy $CATFISH</h2>
-            <p class="mx-auto mt-4 max-w-2xl font-round text-foam/80">Four simple casts. Bait with BNB, hook $CATFISH on HyperSwap.</p>
+            <p class="mx-auto mt-4 max-w-2xl font-round text-foam/80">Four casts on HyperEVM. Bait with HYPE, hook $CATFISH on HyperSwap.</p>
           </div>
 
-          <ol class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            <li class="card-fish relative overflow-hidden rounded-3xl p-6">
-              <span class="step-num mb-5 grid h-12 w-12 place-items-center rounded-full font-display text-2xl">1</span>
-              <h3 class="font-display text-2xl text-cream">Cast your wallet</h3>
+          <div class="mb-10 flex flex-wrap items-center justify-center gap-2">
+            <span class="howto-chip rounded-full px-3 py-1.5 font-round text-[11px] font-bold uppercase tracking-[0.16em] text-aqua">HyperEVM</span>
+            <span class="howto-chip howto-meta rounded-full px-3 py-1.5 font-round text-[11px] font-bold uppercase tracking-[0.16em] text-foam/80">Chain ID 999</span>
+            <span class="howto-chip rounded-full px-3 py-1.5 font-round text-[11px] font-bold uppercase tracking-[0.16em] text-lime">Gas · HYPE</span>
+            <span class="howto-chip rounded-full px-3 py-1.5 font-round text-[11px] font-bold uppercase tracking-[0.16em] text-foam/80">DEX · HyperSwap</span>
+          </div>
+
+          <ol class="howto-grid grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            <li class="howto-step card-fish flex flex-col overflow-hidden rounded-3xl p-6">
+              <div class="mb-5 flex items-center justify-between gap-3">
+                <span class="step-num grid h-12 w-12 place-items-center rounded-full font-display text-2xl transition">1</span>
+                <span class="howto-icon grid h-12 w-12 place-items-center rounded-2xl ring-1 ring-lime/30" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C8FF1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="7" width="18" height="12" rx="2.5"/>
+                    <path d="M3 10h18"/>
+                    <path d="M16 15h2"/>
+                  </svg>
+                </span>
+              </div>
+              <h3 class="font-display text-2xl text-cream">Add HyperEVM</h3>
               <p class="mt-2 font-round text-sm leading-relaxed text-foam/80">
-                Install MetaMask, Rabby, or any EVM wallet. Add the <strong class="text-aqua">HyperEVM</strong> network so you can swim in these waters.
+                Install MetaMask, Rabby, or any EVM wallet. Add <strong class="text-aqua">HyperEVM</strong> so you can swim in these waters.
               </p>
-              <p class="mt-3 font-round text-xs font-bold uppercase tracking-wider text-lime">Step 1 · Wallet</p>
+              <dl class="howto-meta mt-4 space-y-1 rounded-2xl bg-ebony/50 px-3 py-2.5 font-round text-[11px] text-foam/70 ring-1 ring-aqua/15">
+                <div class="flex justify-between gap-3"><dt>Network</dt><dd class="font-bold text-aqua">HyperEVM</dd></div>
+                <div class="flex justify-between gap-3"><dt>Chain ID</dt><dd class="font-bold text-lime">999</dd></div>
+                <div class="flex justify-between gap-3"><dt>Currency</dt><dd class="font-bold text-lime">HYPE</dd></div>
+              </dl>
+              <a href="https://chainlist.org/chain/999" target="_blank" rel="noopener noreferrer" class="mt-auto inline-flex items-center gap-1.5 pt-4 font-round text-xs font-bold uppercase tracking-wider text-lime transition hover:text-cream">
+                Add network
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
             </li>
-            <li class="card-fish relative overflow-hidden rounded-3xl p-6">
-              <span class="step-num mb-5 grid h-12 w-12 place-items-center rounded-full font-display text-2xl">2</span>
-              <h3 class="font-display text-2xl text-cream">Bait with BNB</h3>
+
+            <li class="howto-step card-fish flex flex-col overflow-hidden rounded-3xl p-6">
+              <div class="mb-5 flex items-center justify-between gap-3">
+                <span class="step-num grid h-12 w-12 place-items-center rounded-full font-display text-2xl transition">2</span>
+                <span class="howto-icon grid h-12 w-12 place-items-center rounded-2xl ring-1 ring-aqua/30" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#97FCE4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="8.5"/>
+                    <path d="M12 7.5v9M9.5 9.2c.6-.7 1.5-1.1 2.5-1.1 1.6 0 2.6.8 2.6 2 0 2.7-5.2 1.6-5.2 4.2 0 1.2 1.1 2.1 2.7 2.1 1.1 0 2-.4 2.6-1.1"/>
+                  </svg>
+                </span>
+              </div>
+              <h3 class="font-display text-2xl text-cream">Get HYPE</h3>
               <p class="mt-2 font-round text-sm leading-relaxed text-foam/80">
-                Buy <strong class="text-lime">BNB</strong> on your exchange and send it to your wallet. BNB is the bait — $CATFISH cannot resist a well-cast line.
+                Buy or bridge <strong class="text-lime">HYPE</strong> onto HyperEVM. Keep a little for gas — the rest is bait $CATFISH cannot resist.
               </p>
-              <p class="mt-3 font-round text-xs font-bold uppercase tracking-wider text-lime">Step 2 · Get BNB</p>
+              <p class="mt-4 font-round text-xs leading-relaxed text-foam/55">Transfer HYPE from Hyperliquid Spot to EVM, or withdraw HYPE on the HyperEVM network.</p>
+              <a href="https://app.hyperliquid.xyz" target="_blank" rel="noopener noreferrer" class="mt-auto inline-flex items-center gap-1.5 pt-4 font-round text-xs font-bold uppercase tracking-wider text-lime transition hover:text-cream">
+                Get HYPE
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
             </li>
-            <li class="card-fish relative overflow-hidden rounded-3xl p-6">
-              <span class="step-num mb-5 grid h-12 w-12 place-items-center rounded-full font-display text-2xl">3</span>
-              <h3 class="font-display text-2xl text-cream">Dive into HyperSwap</h3>
+
+            <li class="howto-step card-fish flex flex-col overflow-hidden rounded-3xl p-6">
+              <div class="mb-5 flex items-center justify-between gap-3">
+                <span class="step-num grid h-12 w-12 place-items-center rounded-full font-display text-2xl transition">3</span>
+                <span class="howto-icon grid h-12 w-12 place-items-center rounded-2xl ring-1 ring-lime/30" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C8FF1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 7h10l-2.5-2.5M17 7l-2.5 2.5"/>
+                    <path d="M17 17H7l2.5 2.5M7 17l2.5-2.5"/>
+                    <rect x="5.5" y="9.5" width="13" height="5" rx="1.5"/>
+                  </svg>
+                </span>
+              </div>
+              <h3 class="font-display text-2xl text-cream">Open HyperSwap</h3>
               <p class="mt-2 font-round text-sm leading-relaxed text-foam/80">
-                Open <strong class="text-aqua">HyperSwap</strong>, connect your wallet, and make sure you are on HyperEVM. This is the deepest part of the pond.
+                Open <strong class="text-aqua">HyperSwap</strong>, connect your wallet, and confirm you are on HyperEVM. This is the deepest part of the pond.
               </p>
-              <p class="mt-3 font-round text-xs font-bold uppercase tracking-wider text-lime">Step 3 · Connect</p>
+              <p class="mt-4 font-round text-xs leading-relaxed text-foam/55">Stay on HyperEVM (chain 999) in your wallet before you connect.</p>
+              <a href="https://app.hyperswap.exchange/#/swap?outputCurrency=TBA" target="_blank" rel="noopener noreferrer" class="mt-auto inline-flex items-center gap-1.5 pt-4 font-round text-xs font-bold uppercase tracking-wider text-lime transition hover:text-cream">
+                Open HyperSwap
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
             </li>
-            <li class="card-fish relative overflow-hidden rounded-3xl p-6">
-              <span class="step-num mb-5 grid h-12 w-12 place-items-center rounded-full font-display text-2xl">4</span>
-              <h3 class="font-display text-2xl text-cream">Hook $CATFISH</h3>
+
+            <li class="howto-step card-fish flex flex-col overflow-hidden rounded-3xl p-6">
+              <div class="mb-5 flex items-center justify-between gap-3">
+                <span class="step-num grid h-12 w-12 place-items-center rounded-full font-display text-2xl transition">4</span>
+                <span class="howto-icon grid h-12 w-12 place-items-center rounded-2xl ring-1 ring-aqua/30" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#97FCE4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 8c4-1 6 4 10 3"/>
+                    <path d="M14 11c2.4-.4 4.2.4 6 2.2"/>
+                    <circle cx="8.5" cy="15.5" r="3.2"/>
+                    <path d="M11.2 16.8 L16 20"/>
+                    <path d="M4 8l2-3"/>
+                  </svg>
+                </span>
+              </div>
+              <h3 class="font-display text-2xl text-cream">Swap $CATFISH</h3>
               <p class="mt-2 font-round text-sm leading-relaxed text-foam/80">
-                Paste the contract address, pick <strong class="text-lime">BNB → $CATFISH</strong>, set a little slippage, and swap. Welcome to the school.
+                Paste the contract, pick <strong class="text-lime">HYPE → $CATFISH</strong>, set a little slippage, and swap. Welcome to the school.
               </p>
-              <p class="mt-3 font-round text-xs font-bold uppercase tracking-wider text-lime">Step 4 · Swap</p>
+              <p class="mt-4 font-round text-xs leading-relaxed text-foam/55">Always paste the CA from this page — never a random search result.</p>
+              <a href="https://app.hyperswap.exchange/#/swap?outputCurrency=TBA" target="_blank" rel="noopener noreferrer" class="mt-auto inline-flex items-center gap-1.5 pt-4 font-round text-xs font-bold uppercase tracking-wider text-lime transition hover:text-cream">
+                Buy $CATFISH
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
             </li>
           </ol>
 

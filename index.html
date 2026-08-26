@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catfish | $CATFISH on HyperEVM</title>
+  <meta name="description" content="Catfish is swimming through HyperEVM with viral memes, wild energy, and deep liquidity vibes. Buy $CATFISH on HyperSwap." />
+  <meta name="theme-color" content="#04060C" />
+  <link rel="icon" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <meta property="og:title" content="Catfish | $CATFISH" />
+  <meta property="og:description" content="Catfish is swimming through HyperEVM with viral memes, wild energy, and deep liquidity vibes." />
+  <meta property="og:image" content="banner.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lilita+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ebony: "#04060C",
+            firefly: "#0F3933",
+            aqua: "#97FCE4",
+            foam: "#F5FEFD",
+            lime: "#C8FF1A",
+            zest: "#A8E000",
+            cream: "#F7F3DC",
+            ink: "#0A2E18",
+          },
+          fontFamily: {
+            display: ['"Lilita One"', "cursive"],
+            round: ['Fredoka', "sans-serif"],
+            body: ['Nunito', "sans-serif"],
+          },
+          boxShadow: {
+            glow: "0 0 40px rgba(200,255,26,0.35)",
+            aquaglow: "0 0 40px rgba(151,252,228,0.28)",
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --ebony: #04060C;
+      --firefly: #0F3933;
+      --aqua: #97FCE4;
+      --lime: #C8FF1A;
+      --cream: #F7F3DC;
+      --ca: "TBA";
+    }
+
+    html, body {
+      background: var(--ebony);
+      color: var(--cream);
+    }
+
+    body {
+      font-family: Nunito, system-ui, sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: #C8FF1A;
+      color: #04060C;
+    }
+
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #04060C; }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #97FCE4, #C8FF1A);
+      border-radius: 99px;
+    }
+
+    .pond {
+      background:
+        radial-gradient(1200px 700px at 15% -10%, rgba(151,252,228,0.16), transparent 60%),
+        radial-gradient(900px 600px at 90% 8%, rgba(200,255,26,0.10), transparent 55%),
+        radial-gradient(800px 500px at 50% 100%, rgba(15,57,51,0.85), transparent 70%),
+        linear-gradient(180deg, #04060C 0%, #071a18 28%, #0F3933 70%, #04060C 100%);
+    }
+
+    .caustics {
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 40% 20% at 20% 30%, rgba(151,252,228,0.09), transparent 70%),
+        radial-gradient(ellipse 50% 24% at 80% 20%, rgba(200,255,26,0.07), transparent 70%),
+        radial-gradient(ellipse 30% 18% at 50% 70%, rgba(151,252,228,0.06), transparent 70%);
+      animation: causticShift 14s ease-in-out infinite;
+    }
+
+    .grain {
+      pointer-events: none;
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .scales {
+      background-image: radial-gradient(circle at 50% 0, rgba(151,252,228,0.07) 18%, transparent 19%),
+        radial-gradient(circle at 0 50%, rgba(200,255,26,0.05) 18%, transparent 19%);
+      background-size: 42px 24px;
+      background-position: 0 0, 21px 12px;
+    }
+
+    .glass {
+      background: rgba(4, 6, 12, 0.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(151, 252, 228, 0.18);
+    }
+
+    .lime-glow {
+      box-shadow: 0 0 0 1px rgba(200,255,26,0.35), 0 10px 40px rgba(200,255,26,0.22);
+    }
+
+    .btn-shine {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-shine::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      transform: translateX(-120%) skewX(-18deg);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+      animation: shine 4.2s ease-in-out infinite;
+    }
+
+    @keyframes shine {
+      0%, 55% { transform: translateX(-120%) skewX(-18deg); }
+      80%, 100% { transform: translateX(160%) skewX(-18deg); }
+    }
+
+    @keyframes causticShift {
+      0%, 100% { opacity: 1; transform: translate3d(0,0,0) scale(1); }
+      50% { opacity: 0.7; transform: translate3d(-2%, 1%, 0) scale(1.05); }
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-14px) rotate(2deg); }
+    }
+
+    @keyframes swim {
+      0% { transform: translateX(-18vw) translateY(0) scaleX(1); }
+      48% { transform: translateX(108vw) translateY(-10px) scaleX(1); }
+      50% { transform: translateX(108vw) translateY(-10px) scaleX(-1); }
+      98% { transform: translateX(-18vw) translateY(8px) scaleX(-1); }
+      100% { transform: translateX(-18vw) translateY(0) scaleX(1); }
+    }
+
+    @keyframes bubble {
+      0% { transform: translateY(0) scale(1); opacity: 0; }
+      12% { opacity: 0.7; }
+      100% { transform: translateY(-110vh) scale(1.3); opacity: 0; }
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    @keyframes waveDrift {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(-40px); }
+    }
+
+    @keyframes pulseRing {
+      0% { box-shadow: 0 0 0 0 rgba(200,255,26,0.45); }
+      70% { box-shadow: 0 0 0 18px rgba(200,255,26,0); }
+      100% { box-shadow: 0 0 0 0 rgba(200,255,26,0); }
+    }
+
+    @keyframes splat {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.08) rotate(6deg); }
+    }
+
+    .bob { animation: bob 4.4s ease-in-out infinite; }
+    .pulse-ring { animation: pulseRing 2.6s ease-out infinite; }
+
+    .swimmer {
+      position: absolute;
+      opacity: 0.18;
+      animation: swim linear infinite;
+      pointer-events: none;
+      filter: drop-shadow(0 0 8px rgba(200,255,26,0.35));
+    }
+
+    .ticker-track {
+      animation: marquee 28s linear infinite;
+    }
+
+    .wave-path {
+      animation: waveDrift 8s ease-in-out infinite;
+    }
+
+    .card-fish {
+      background: linear-gradient(180deg, rgba(15,57,51,0.72), rgba(4,6,12,0.86));
+      border: 1px solid rgba(151,252,228,0.16);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35), inset 0 1px 0 rgba(151,252,228,0.12);
+    }
+
+    .step-num {
+      background: radial-gradient(circle at 30% 30%, #E8FF6A, #A8E000 55%, #6FBE00);
+      color: #0A2E18;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.35);
+    }
+
+    .rays {
+      background: repeating-linear-gradient(
+        -18deg,
+        transparent 0 46px,
+        rgba(151,252,228,0.035) 46px 52px
+      );
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent 75%);
+    }
+
+    .nav-link {
+      position: relative;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -4px;
+      height: 2px;
+      background: linear-gradient(90deg, #97FCE4, #C8FF1A);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+    .nav-link:hover::after { transform: scaleX(1); }
+
+    .copy-toast {
+      transform: translateY(12px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s ease;
+    }
+    .copy-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    iframe.chart-frame {
+      background: #0b1210;
+    }
+
+    .twitter-wrap iframe {
+      margin: 0 auto !important;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="pond relative min-h-screen text-cream">
+  <div class="caustics fixed inset-0 z-0"></div>
+  <div class="rays fixed inset-0 z-0"></div>
+  <div class="grain fixed inset-0 z-0"></div>
+  <div class="scales fixed inset-0 z-0 opacity-60"></div>
+  <div id="bubbles" class="fixed inset-0 z-[1] overflow-hidden pointer-events-none"></div>
+  <div id="school" class="fixed inset-0 z-[1] overflow-hidden pointer-events-none"></div>
+
+  <!-- NAV -->
+  <header class="fixed top-0 inset-x-0 z-50">
+    <nav class="glass mx-auto mt-3 flex w-[min(1180px,calc(100%-1.25rem))] items-center justify-between rounded-2xl px-3 py-2.5 shadow-lg shadow-black/30 sm:px-5">
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <span class="relative grid h-11 w-11 place-items-center overflow-hidden rounded-full ring-2 ring-lime/80 shadow-glow">
+          <img src="logo.png" alt="Catfish logo" class="h-full w-full object-cover object-[42%_38%] scale-125" />
+        </span>
+        <span class="leading-none">
+          <span class="block font-display text-xl tracking-wide text-lime drop-shadow">CATFISH</span>
+          <span class="block font-round text-[11px] font-semibold tracking-[0.18em] text-aqua/80">$CATFISH</span>
+        </span>
+      </a>
+
+      <div class="hidden items-center gap-7 md:flex">
+        <a href="#about" class="nav-link font-round text-sm font-semibold text-foam/80 hover:text-lime">About</a>
+        <a href="#howto" class="nav-link font-round text-sm font-semibold text-foam/80 hover:text-lime">How to Buy</a>
+        <a href="#chart" class="nav-link font-round text-sm font-semibold text-foam/80 hover:text-lime">Chart</a>
+        <a href="#community" class="nav-link font-round text-sm font-semibold text-foam/80 hover:text-lime">Community</a>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="https://x.com/CatfishHyper" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter" class="grid h-9 w-9 place-items-center rounded-full bg-black ring-1 ring-foam/20 transition hover:scale-110 hover:ring-lime/70">
+          <img src="x.png" alt="" class="h-5 w-5 object-contain" />
+        </a>
+        <a href="https://app.hyperswap.exchange/#/swap?outputCurrency=TBA" target="_blank" rel="noopener noreferrer" class="btn-shine hidden rounded-full bg-lime px-4 py-2 font-round text-sm font-bold text-ink shadow-glow transition hover:brightness-110 sm:inline-flex">
+          Buy Now
+        </a>
+        <button id="menuBtn" class="grid h-10 w-10 place-items-center rounded-xl ring-1 ring-aqua/25 md:hidden" aria-label="Open menu" aria-expanded="false">
+          <svg width="20" height="20" fill="none" stroke="#97FCE4" stroke-width="2.2"><path d="M3 6h14M3 10h14M3 14h14"/></svg>
+        </button>
+      </div>
+    </nav>
+    <div id="mobileMenu" class="hidden md:hidden">
+      <div class="glass mx-auto mt-2 w-[min(1180px,calc(100%-1.25rem))] rounded-2xl p-4">
+        <div class="flex flex-col gap-3 font-round font-semibold">
+          <a href="#about" class="rounded-lg px-3 py-2 hover:bg-aqua/10">About</a>
+          <a href="#howto" class="rounded-lg px-3 py-2 hover:bg-aqua/10">How to Buy</a>
+          <a href="#chart" class="rounded-lg px-3 py-2 hover:bg-aqua/10">Chart</a>
+          <a href="#community" class="rounded-lg px-3 py-2 hover:bg-aqua/10">Community</a>
+          <a href="https://app.hyperswap.exchange/#/swap?outputCurrency=TBA" target="_blank" rel="noopener noreferrer" class="mt-1 rounded-full bg-lime px-4 py-2.5 text-center font-bold text-ink">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="relative z-10">
+    <!-- HERO -->
+    <section class="relative pt-28 sm:pt-32">
+      <div class="pointer-events-none absolute -left-10 top-40 h-64 w-64 rounded-full bg-lime/10 blur-3xl"></div>
+      <div class="pointer-events-none absolute right-0 top-24 h-72 w-72 rounded-full bg-aqua/10 blur-3xl"></div>
+
+      <div class="mx-auto grid w-[min(1180px,calc(100%-1.5rem))] items-center gap-10 pb-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8 lg:pb-6">
+        <div>
+          <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-aqua/25 bg-firefly/50 px-3 py-1.5 font-round text-xs font-semibold tracking-wide text-aqua">
+            <span class="h-2 w-2 animate-pulse rounded-full bg-lime shadow-glow"></span>
+            Swimming on HyperEVM
+          </div>
+
+          <h1 class="font-display text-6xl leading-[0.9] tracking-wide text-lime drop-shadow-[0_6px_0_#0A2E18] sm:text-8xl">
+            CATFISH
+          </h1>
+          <p class="mt-2 font-display text-2xl tracking-widest text-aqua sm:text-3xl">$CATFISH</p>
+
+          <p class="mt-6 max-w-xl font-round text-lg font-medium leading-relaxed text-foam/90 sm:text-xl">
+            Catfish is swimming through HyperEVM with
+            <span class="text-lime">viral memes</span>,
+            <span class="text-aqua">wild energy</span>, and
+            <span class="text-lime">deep liquidity vibes</span>.
+          </p>
+
+          <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <div class="flex items-center gap-2 rounded-full border border-lime/30 bg-ebony/70 px-3 py-2 lime-glow">
+              <span class="font-round text-[11px] font-bold uppercase tracking-[0.16em] text-aqua">CA</span>
+              <code id="caText" class="font-mono text-sm text-lime sm:text-base">TBA</code>
+              <button id="copyBtn" type="button" class="rounded-full bg-lime px-3 py-1 font-round text-xs font-bold text-ink transition hover:brightness-110">
+                Copy
+              </button>
+            </div>
+            <span id="copyToast" class="copy-toast font-round text-sm font-semibold text-lime">Copied to clipboard.</span>
+          </div>
+
+          <div class="mt-6 flex flex-wrap items-center gap-3">
+            <a href="https://app.hyperswap.exchange/#/swap?outputCurrency=TBA" target="_blank" rel="noopener noreferrer" class="btn-shine pulse-ring inline-flex items-center gap-2 rounded-full bg-lime px-6 py-3 font-round text-base font-bold text-ink shadow-glow transition hover:-translate-y-0.5 hover:brightness-110">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12h16M13 5l7 7-7 7"/></svg>
+              Buy Now
+            </a>
+            <a href="https://dexscreener.com/hyperevm/TBA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full border border-aqua/50 bg-firefly/60 px-6 py-3 font-round text-base font-bold text-aqua shadow-aquaglow transition hover:-translate-y-0.5 hover:border-aqua hover:bg-firefly">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 19V5m0 14h16M8 15l3.5-4.5 3 3L19 8"/></svg>
+              Chart
+            </a>
+          </div>
+
+          <div class="mt-6 flex items-center gap-4">
+            <a href="https://x.com/CatfishHyper" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 rounded-full bg-white/5 px-3 py-1.5 ring-1 ring-white/10 transition hover:ring-lime/50">
+              <img src="x.png" alt="" class="h-5 w-5 rounded-sm object-contain" />
+              <span class="font-round text-sm font-semibold">Twitter</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="relative mx-auto w-full max-w-md lg:max-w-none">
+          <div class="absolute -inset-6 rounded-[40%] bg-lime/15 blur-2xl"></div>
+          <div class="bob relative mx-auto aspect-square w-[min(420px,86vw)]">
+            <div class="absolute inset-0 rounded-[42%] border-4 border-lime/80 bg-gradient-to-br from-zest/30 to-firefly/40 p-3 shadow-glow">
+              <div class="h-full w-full overflow-hidden rounded-[38%] bg-cream ring-4 ring-ink/40">
+                <img src="logo.png" alt="Catfish mascot" class="h-full w-full object-cover object-[42%_36%] scale-[1.15]" />
+              </div>
+            </div>
+            <div class="absolute -right-2 top-8 rotate-12 rounded-full bg-lime px-3 py-1 font-display text-sm text-ink shadow-glow">CHOMP</div>
+            <div class="absolute -left-4 bottom-16 -rotate-12 rounded-full bg-aqua px-3 py-1 font-display text-sm text-ink">GLUB</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BANNER -->
+      <div class="relative mx-auto w-[min(1180px,calc(100%-1.5rem))] overflow-hidden rounded-[28px] border border-lime/25 shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
+        <img src="banner.jpg" alt="Catfish banner" class="h-40 w-full object-cover sm:h-56 md:h-72 lg:h-80" />
+        <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ebony/50 via-transparent to-ebony/20"></div>
+        <div class="absolute bottom-4 left-4 right-4 flex flex-wrap items-end justify-between gap-3">
+          <p class="font-display text-lg text-cream drop-shadow sm:text-2xl">Paint-splatter energy. Pond-deep liquidity.</p>
+          <span class="rounded-full bg-ebony/70 px-3 py-1 font-round text-xs font-bold tracking-widest text-lime ring-1 ring-lime/40">HYPEREVM</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="relative mt-10 overflow-hidden border-y border-lime/20 bg-firefly/40 py-3">
+      <div class="ticker-track flex w-max gap-10 whitespace-nowrap font-display text-lg tracking-wide text-lime sm:text-2xl">
+        <span>CATFISH is swimming through HyperEVM • viral memes • wild energy • deep liquidity vibes • $CATFISH • CHOMP • GLUB GLUB • HyperSwap • Dexscreener • join the school •</span>
+        <span>CATFISH is swimming through HyperEVM • viral memes • wild energy • deep liquidity vibes • $CATFISH • CHOMP • GLUB GLUB • HyperSwap • Dexscreener • join the school •</span>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about" class="relative mx-auto w-[min(1180px,calc(100%-1.5rem))] py-20">
+      <div class="mb-10 text-center">
+        <p class="font-round text-xs font-bold uppercase tracking-[0.28em] text-aqua">The pond</p>
+        <h2 class="mt-2 font-display text-4xl text-lime sm:text-5xl">Why Catfish hits different</h2>
+        <p class="mx-auto mt-4 max-w-2xl font-round text-base text-foam/80 sm:text-lg">
+          A crayon-born cat with a fish body, blasting lime paint across HyperEVM.
+          No boring whitepaper energy — just memes, motion, and a school that never stops swimming.
+        </p>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-3">
+        <article class="card-fish group rounded-3xl p-6 transition hover:-translate-y-1">
+          <div class="mb-4 grid h-14 w-14 place-items-center rounded-2xl bg-lime/15 text-3xl ring-1 ring-lime/30">🐸</div>
+          <h3 class="font-display text-2xl text-lime">Viral Memes</h3>
+          <p class="mt-2 font-round text-foam/80">Hand-drawn chaos. Cat face. Fish body. The kind of mascot that lives in group chats and never leaves.</p>
+        </article>
+        <article class="card-fish group rounded-3xl p-6 transition hover:-translate-y-1">
+          <div class="mb-4 grid h-14 w-14 place-items-center rounded-2xl bg-aqua/15 text-3xl ring-1 ring-aqua/30">⚡</div>
+          <h3 class="font-display text-2xl text-aqua">Wild Energy</h3>
+          <p class="mt-2 font-round text-foam/80">Paint splashes, whiskers, and HyperEVM speed. Catfish does not float — it charges through the current.</p>
+        </article>
+        <article class="card-fish group rounded-3xl p-6 transition hover:-translate-y-1">
+          <div class="mb-4 grid h-14 w-14 place-items-center rounded-2xl bg-lime/15 text-3xl ring-1 ring-lime/30">💧</div>
+          <h3 class="font-display text-2xl text-lime">Deep Liquidity Vibes</h3>
+          <p class="mt-2 font-round text-foam/80">The pond is the pool. Swim in, swap $CATFISH, and stay for the tide on HyperEVM.</p>
+        </article>
+      </div>
+
+      <div class="twitter-wrap card-fish mx-auto mt-10 max-w-xl overflow-hidden rounded-3xl p-4 sm:p-6">
+        <p class="mb-3 font-round text-xs font-bold uppercase tracking-[0.2em] text-aqua">From the HyperEVM pond</p>
+        <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
+          <p lang="en" dir="ltr">jeff is feeling unappreciated</p>
+          &mdash; Hypurr (@Hypurr)
+          <a href="https://twitter.com/Hypurr/status/1888123591104806989">February 8, 2025</a>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- HOW TO BUY -->
+    <section id="howto" class="relative py-8">
+      <svg class="absolute -top-1 left-0 w-[200%] text-firefly/80 wave-path" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+        <path fill="currentColor" d="M0,32 C240,80 480,0 720,32 C960,64 1200,8 1440,40 L1440,80 L0,80 Z"></path>
+      </svg>
+      <div class="bg-gradient-to-b from-firefly/80 to-ebony">
+        <div class="relative mx-auto w-[min(1180px,calc(100%-1.5rem))] py-16">
+          <div class="mb-12 text-center">
+            <p class="font-round text-xs font-bold uppercase tracking-[0.28em] text-aqua">Catch of the day</p>
+            <h2 class="mt-2 font-display text-4xl text-lime sm:text-5xl">How to Buy $CATFISH</h2>
+            <p class="mx-auto mt-4 max-w-2xl font-round text-foam/80">Four simple casts. Bait with BNB, hook $CATFISH on HyperSwap.</p>
+          </div>
+
+          <ol class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            <li class="card-fish relative overflow-hidden rounded-3xl p-6">
+              <span class="step-num mb-5 grid h-12 w-12 place-items-center rounded-full font-display text-2xl">1</span>
+              <h3 class="font-display text-2xl text-cream">Cast your wallet</h3>
+              <p class="mt-2 font-round text-sm leading-relaxed text-foam/80">
+                Install MetaMask, Rabby, or any EVM wallet. Add the <strong class="text-aqua">HyperEVM</strong> network so you can swim in these waters.
+              </p>
+              <p class="mt-3 font-round text-xs font-bold uppercase tracking-wider text-lime">Step 1 · Wallet</p>
+            </li>
+            <li class="card-fish relative overflow-hidden rounded-3xl p-6">
+              <span class="step-num mb-5 grid h-12 w-12 place-items-center rounded-full font-display text-2xl">2</span>
+              <h3 class="font-display text-2xl text-cream">Bait with BNB</h3>
+              <p class="mt-2 font-round text-sm leading-relaxed text-foam/80">
+                Buy <strong class="text-lime">BNB</strong> on your exchange and send it to your wallet. BNB is the bait — $CATFISH cannot resist a well-cast line.
+              </p>
+              <p class="mt-3 font-round text-xs font-bold uppercase tracking-wider text-lime">Step 2 · Get BNB</p>
+            </li>
+            <li class="card-fish relative overflow-hidden rounded-3xl p-6">
+              <span class="step-num mb-5 grid h-12 w-12 place-items-center rounded-full font-display text-2xl">3</span>
+              <h3 class="font-display text-2xl text-cream">Dive into HyperSwap</h3>
+              <p class="mt-2 font-round text-sm leading-relaxed text-foam/80">
+                Open <strong class="text-aqua">HyperSwap</strong>, connect your wallet, and make sure you are on HyperEVM. This is the deepest part of the pond.
+              </p>
+              <p class="mt-3 font-round text-xs font-bold uppercase tracking-wider text-lime">Step 3 · Connect</p>
+            </li>
+            <li class="card-fish relative overflow-hidden rounded-3xl p-6">
+              <span class="step-num mb-5 grid h-12 w-12 place-items-center rounded-full font-display text-2xl">4</span>
+              <h3 class="font-display text-2xl text-cream">Hook $CATFISH</h3>
+              <p class="mt-2 font-round text-sm leading-relaxed text-foam/80">
+                Paste the contract address, pick <strong class="text-lime">BNB → $CATFISH</strong>, set a little slippage, and swap. Welcome to the school.
+              </p>
+              <p class="mt-3 font-round text-xs font-bold uppercase tracking-wider text-lime">Step 4 · Swap</p>
+            </li>
+          </ol>
+
+          <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <button type="button" id="copyBtn2" class="rounded-full border border-lime/40 bg-ebony/60 px-5 py-3 font-round text-sm font-bold text-lime transition hover:bg-lime hover:text-ink">
+              Copy CA · TBA
+            </button>
+            <a href="https://app.hyperswap.exchange/#/swap?outputCurrency=TBA" target="_blank" rel="noopener noreferrer" class="btn-shine rounded-full bg-lime px-6 py-3 font-round text-sm font-bold text-ink shadow-glow transition hover:brightness-110">
+              Buy $CATFISH Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHART -->
+    <section id="chart" class="relative mx-auto w-[min(1180px,calc(100%-1.5rem))] py-16">
+      <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="font-round text-xs font-bold uppercase tracking-[0.28em] text-aqua">Live current</p>
+          <h2 class="mt-2 font-display text-4xl text-lime sm:text-5xl">$CATFISH Chart</h2>
+        </div>
+        <a href="https://dexscreener.com/hyperevm/TBA" target="_blank" rel="noopener noreferrer" class="rounded-full border border-aqua/40 px-4 py-2 font-round text-sm font-bold text-aqua transition hover:bg-aqua hover:text-ink">
+          Open Dexscreener
+        </a>
+      </div>
+      <div class="overflow-hidden rounded-3xl border border-aqua/20 shadow-aquaglow">
+        <iframe
+          class="chart-frame h-[420px] w-full sm:h-[560px] lg:h-[640px]"
+          title="Dexscreener $CATFISH chart"
+          src="https://dexscreener.com/hyperevm/TBA?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"
+          allow="clipboard-write"
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- COMMUNITY -->
+    <section id="community" class="relative mx-auto w-[min(1180px,calc(100%-1.5rem))] pb-20 pt-6">
+      <div class="mb-10 text-center">
+        <p class="font-round text-xs font-bold uppercase tracking-[0.28em] text-aqua">Join the school</p>
+        <h2 class="mt-2 font-display text-4xl text-lime sm:text-5xl">Community</h2>
+        <p class="mx-auto mt-4 max-w-xl font-round text-foam/80">Paint in the timeline. Come swim with the school on X.</p>
+      </div>
+
+      <div class="mx-auto grid max-w-3xl items-start gap-5 md:grid-cols-2">
+        <a href="https://x.com/CatfishHyper" target="_blank" rel="noopener noreferrer" class="card-fish flex items-center gap-4 rounded-3xl p-5 transition hover:-translate-y-1 hover:border-lime/40">
+          <span class="grid h-14 w-14 place-items-center overflow-hidden rounded-full bg-black ring-1 ring-white/20">
+            <img src="x.png" alt="" class="h-8 w-8 object-contain" />
+          </span>
+          <div>
+            <p class="font-display text-2xl text-cream">Twitter / X</p>
+            <p class="font-round text-sm text-lime">x.com/CatfishHyper</p>
+          </div>
+        </a>
+        <div class="card-fish rounded-3xl p-5">
+          <p class="font-round text-xs font-bold uppercase tracking-[0.2em] text-aqua">Contract</p>
+          <p class="mt-2 break-all font-mono text-lg text-lime">TBA</p>
+          <button type="button" id="copyBtn3" class="mt-3 rounded-full bg-lime px-4 py-1.5 font-round text-xs font-bold text-ink">Copy CA</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="relative z-10 border-t border-aqua/15 bg-ebony/80">
+    <div class="mx-auto flex w-[min(1180px,calc(100%-1.5rem))] flex-col items-center gap-4 py-10 text-center">
+      <a href="#top" class="flex items-center gap-2">
+        <img src="logo.png" alt="" class="h-10 w-10 rounded-full object-cover object-[42%_38%] ring-2 ring-lime" />
+        <span class="font-display text-2xl text-lime">CATFISH</span>
+      </a>
+      <p class="font-round text-sm text-foam/70">$CATFISH · HyperEVM · viral memes, wild energy, deep liquidity vibes.</p>
+      <div class="flex items-center gap-3">
+        <a href="https://x.com/CatfishHyper" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+          <img src="x.png" alt="X" class="h-8 w-8 rounded-full object-cover" />
+        </a>
+        <a href="https://app.hyperswap.exchange/#/swap?outputCurrency=TBA" target="_blank" rel="noopener noreferrer" class="font-round text-sm font-bold text-lime hover:underline">Buy Now</a>
+        <a href="https://dexscreener.com/hyperevm/TBA" target="_blank" rel="noopener noreferrer" class="font-round text-sm font-bold text-aqua hover:underline">Chart</a>
+      </div>
+      <p class="max-w-xl font-round text-[11px] leading-relaxed text-foam/40">
+        $CATFISH is a meme coin created for entertainment. Nothing here is financial advice. Always DYOR. Contract address currently TBA.
+      </p>
+    </div>
+  </footer>
+
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script>
+    const CA = "TBA";
+
+    function copyCA() {
+      const done = () => {
+        const toast = document.getElementById("copyToast");
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 1800);
+        [copyBtn, copyBtn2, copyBtn3].forEach((btn) => {
+          if (!btn) return;
+          const prev = btn.dataset.label || btn.textContent;
+          btn.dataset.label = prev;
+          btn.textContent = "Copied!";
+          setTimeout(() => { btn.textContent = btn.dataset.label; }, 1400);
+        });
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(CA).then(done).catch(() => fallbackCopy(done));
+      } else {
+        fallbackCopy(done);
+      }
+    }
+
+    function fallbackCopy(done) {
+      const el = document.createElement("textarea");
+      el.value = CA;
+      document.body.appendChild(el);
+      el.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      el.remove();
+      done();
+    }
+
+    const copyBtn = document.getElementById("copyBtn");
+    const copyBtn2 = document.getElementById("copyBtn2");
+    const copyBtn3 = document.getElementById("copyBtn3");
+    [copyBtn, copyBtn2, copyBtn3].forEach((b) => b && b.addEventListener("click", copyCA));
+
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    menuBtn.addEventListener("click", () => {
+      const open = mobileMenu.classList.toggle("hidden") === false;
+      menuBtn.setAttribute("aria-expanded", String(open));
+    });
+    mobileMenu.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        menuBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    const bubbles = document.getElementById("bubbles");
+    for (let i = 0; i < 22; i++) {
+      const b = document.createElement("span");
+      const size = 6 + Math.random() * 16;
+      b.style.cssText = [
+        "position:absolute",
+        "bottom:-40px",
+        "border-radius:999px",
+        "border:1px solid rgba(151,252,228,0.45)",
+        "background:radial-gradient(circle at 30% 30%, rgba(245,254,253,0.45), rgba(151,252,228,0.08))",
+        `width:${size}px`,
+        `height:${size}px`,
+        `left:${Math.random() * 100}%`,
+        `animation: bubble ${10 + Math.random() * 16}s linear ${Math.random() * 12}s infinite`,
+      ].join(";");
+      bubbles.appendChild(b);
+    }
+
+    const school = document.getElementById("school");
+    const fishSVG = `
+      <svg viewBox="0 0 140 70" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 35 L2 12 L8 35 L2 58 Z" fill="#C8FF1A"/>
+        <ellipse cx="72" cy="35" rx="50" ry="24" fill="#A8E000"/>
+        <path d="M48 18 L58 4 L66 18" fill="#C8FF1A"/>
+        <path d="M70 18 L80 4 L88 18" fill="#C8FF1A"/>
+        <ellipse cx="88" cy="36" rx="26" ry="18" fill="#F7F3DC"/>
+        <circle cx="80" cy="34" r="3.2" fill="#0A2E18"/>
+        <circle cx="96" cy="34" r="3.2" fill="#0A2E18"/>
+        <path d="M88 42 q4 4 8 0" stroke="#0A2E18" stroke-width="2" fill="none"/>
+        <path d="M70 36 L52 30 M70 40 L52 44 M104 36 L122 30 M104 40 L122 44" stroke="#0A2E18" stroke-width="1.6"/>
+      </svg>`;
+    for (let i = 0; i < 6; i++) {
+      const f = document.createElement("div");
+      f.className = "swimmer";
+      const w = 70 + Math.random() * 90;
+      f.style.width = w + "px";
+      f.style.top = 12 + i * 14 + Math.random() * 6 + "%";
+      f.style.animationDuration = 22 + i * 7 + "s";
+      f.style.animationDelay = (-i * 4) + "s";
+      f.innerHTML = fishSVG;
+      school.appendChild(f);
+    }
+  </script>
+</body>
+</html>
